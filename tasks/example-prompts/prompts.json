@@ -1,0 +1,86 @@
+[
+  {
+    "id": "list-workspace",
+    "title": "Orient in the workspace",
+    "project_key": "RL",
+    "suggested_tools": ["jira_list_projects", "jira_get_project", "jira_search_issues"],
+    "prompt": "List all JIRA projects, then show details for project RL including how many issues it has. Finally, list up to 10 issues in RL with their keys, summaries, and statuses."
+  },
+  {
+    "id": "inspect-issue-thread",
+    "title": "Deep read one issue + comments",
+    "project_key": "RL",
+    "suggested_tools": ["jira_get_issue", "jira_list_comments"],
+    "prompt": "Fetch issue RL-1 with all fields, then list every comment on RL-1. Summarize what the issue is about and what was said in the comments."
+  },
+  {
+    "id": "search-by-text",
+    "title": "Search by keyword",
+    "project_key": "RL",
+    "suggested_tools": ["jira_search_issues"],
+    "prompt": "Search issues whose summary or description mentions \"LangChain\" or \"RLHF\". Return matching keys and statuses."
+  },
+  {
+    "id": "filter-by-status",
+    "title": "Filter by status in a project",
+    "project_key": "DEMO",
+    "suggested_tools": ["jira_search_issues", "jira_get_issue"],
+    "prompt": "In project DEMO, find all issues still in \"To Do\". For each match, get the full issue record and give a one-line summary."
+  },
+  {
+    "id": "create-bug-demo",
+    "title": "Create a new issue",
+    "project_key": "DEMO",
+    "suggested_tools": ["jira_create_issue", "jira_search_issues"],
+    "prompt": "Create a new Bug in project DEMO with summary \"Webhook retries fail under load\" and description explaining that retries return 429 after the third attempt. Set priority to High. Then search DEMO for that summary to confirm the new key."
+  },
+  {
+    "id": "transition-and-comment",
+    "title": "Transition + add comment",
+    "project_key": "RL",
+    "suggested_tools": ["jira_get_issue", "jira_transition_issue", "jira_add_comment"],
+    "prompt": "For issue RL-2: if it is not already In Progress, transition it to In Progress. Then add a comment from author \"reviewer\" saying \"Picked up for sprint review — blocking on design.\" Finally, show the updated issue and its comments."
+  },
+  {
+    "id": "update-fields",
+    "title": "Update issue metadata",
+    "project_key": "RL",
+    "suggested_tools": ["jira_get_issue", "jira_update_issue"],
+    "prompt": "Update issue RL-1: set assignee to \"dana\" and priority to \"Highest\". Leave summary unchanged unless it is empty. Return the updated fields."
+  },
+  {
+    "id": "orders-snapshot",
+    "title": "Cross-project read (ORD)",
+    "project_key": "ORD",
+    "suggested_tools": ["jira_get_project", "jira_search_issues", "jira_get_issue"],
+    "prompt": "Summarize project ORD: name, type, and issue count. List issues in ORD and open ORD-10 in full. State whether ORD-10 is Done and what it is about."
+  },
+  {
+    "id": "inventory-empty-check",
+    "title": "Empty project check (INV)",
+    "project_key": "INV",
+    "suggested_tools": ["jira_get_project", "jira_search_issues"],
+    "prompt": "Check project INV: confirm it exists and list any issues (there may be none). If there are no issues, say so clearly."
+  },
+  {
+    "id": "multi-step-research",
+    "title": "Research then recommend",
+    "project_key": "RL",
+    "suggested_tools": ["jira_search_issues", "jira_get_issue", "jira_list_comments"],
+    "prompt": "Across all projects, find issues in \"In Progress\". For each, note key and project. Pick the RL one if present and describe its comments and next steps a PM should take."
+  },
+  {
+    "id": "safe-delete-flow",
+    "title": "Create, verify, delete (destructive demo)",
+    "project_key": "DEMO",
+    "suggested_tools": ["jira_create_issue", "jira_get_issue", "jira_delete_issue"],
+    "prompt": "Create a Task in DEMO with summary \"TEMP: delete me — agent smoke test\" and description \"Ephemeral row for tool test.\" Fetch it by key, then delete that same issue, and confirm deletion by trying to get the issue again (should fail)."
+  },
+  {
+    "id": "blocked-escalation",
+    "title": "Block an issue",
+    "project_key": "DEMO",
+    "suggested_tools": ["jira_get_issue", "jira_transition_issue", "jira_add_comment"],
+    "prompt": "For DEMO-1: transition it to Blocked if possible, and add a comment from \"ops\" explaining \"Waiting on payment provider sandbox.\" Show final status and comments."
+  }
+]

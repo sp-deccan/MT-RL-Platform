@@ -1,0 +1,38 @@
+# Copy to config.yaml and set your API key (or use OPENAI_API_KEY in the environment).
+
+openai:
+  # Use ${OPENAI_API_KEY} to read from the environment, or paste a key (not recommended in git).
+  api_key: ${OPENAI_API_KEY}
+  model: gpt-4o-mini
+  # Slightly different sampling for the two trajectories
+  temperature_a: 0.15
+  temperature_b: 0.55
+  max_tool_rounds: 14
+  # Temperature for POST /api/verifiers/generate
+  verifier_temperature: 0.25
+  # Optional: override $/1M tokens for verifier_run_*.json cost estimates
+  # pricing_usd_per_1m_tokens:
+  #   gpt-4o-mini:
+  #     input: 0.15
+  #     output: 0.60
+
+jira_db:
+  # Ephemeral per-browser-tab DBs (see X-RL-Session-Id); reset after golden submit.
+  sessions_dir: data/sessions
+
+prompts:
+  system_dir: prompts/system
+
+server:
+  host: 0.0.0.0
+  port: 8000
+
+# Model + tool-call traces from POST /api/agent/run (one JSON file per submit).
+# Verifier AI logs (steps, prompts, token usage, estimated USD cost) default to the same folder.
+logging:
+  agent_runs_dir: json_logs
+  # verifier_runs_dir: json_logs
+
+# Full task JSON from “Submit full task” (golden dataset export).
+golden:
+  tasks_dir: Golden_trajecoty

@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local secrets and DB
+config.yaml
+data/*.sqlite3
+data/sessions/
+json_logs/
+
+#unnecessary directory
+
+Golden_trajecoty/
+json_logs/
+rl_platform.egg-info/

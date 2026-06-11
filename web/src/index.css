@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+/* Keep primary action buttons black + white when disabled (avoid browser grey wash). */
+button.btn-primary {
+  background-color: #18181b;
+  color: #fff;
+}
+
+button.btn-primary:hover:not(:disabled) {
+  background-color: #27272a;
+}
+
+button.btn-primary:disabled {
+  background-color: #18181b;
+  color: #fff;
+  opacity: 1;
+  cursor: not-allowed;
+}
